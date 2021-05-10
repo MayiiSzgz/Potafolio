@@ -13,7 +13,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     ActivityMainBinding activityMainBinding;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
@@ -21,12 +22,25 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     }
 
-    private void setClickListeners() {
-        activityMainBinding.cvSqlite.setOnClickListener(new View.OnClickListener() {
+    private void setClickListeners()
+    {
+        activityMainBinding.cvSqlite.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 startActivity(new Intent(getApplicationContext(), SQLiteActivity.class ));
             }
         });
+        activityMainBinding.cvMaps.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
     }
+
+
 }
