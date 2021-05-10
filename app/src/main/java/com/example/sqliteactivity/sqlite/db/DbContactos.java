@@ -116,5 +116,31 @@ public class DbContactos extends DbHelper
         return seEditoCorrectamente;
     }
 
+    public boolean eliminarContacto(int id)
+    {
+        boolean seEliminoRegistro = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        try
+        {
+            db.execSQL("DELETE FROM " + TABLE_CONTACTOS + " WHERE id = '" + id + "'");
+            seEliminoRegistro = true;
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            seEliminoRegistro = false;
+        }
+        finally
+        {
+            db.close();
+        }
+        return seEliminoRegistro;
+    }
+
+
+
 
 }

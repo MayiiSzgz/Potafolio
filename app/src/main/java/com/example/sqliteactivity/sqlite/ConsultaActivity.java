@@ -1,7 +1,9 @@
 package com.example.sqliteactivity.sqlite;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -64,6 +66,32 @@ public class ConsultaActivity extends AppCompatActivity {
                 Intent editarActivityIntent = new Intent(getApplicationContext(), EditarActivity.class).putExtra("ID", id);
                 startActivity(editarActivityIntent);
                 Toast.makeText(getApplicationContext(), "editar", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        activityConsultaBinding.fabEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ConsultaActivity.this);
+                builder.setMessage("¿Desea eliminar este contacto").setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i)
+                    {
+                        if (dbContactos.eliminarContacto(id))
+                        {
+                            startActivity(new Intent(getApplicationContext(), SQLiteActivity.class));
+                        }
+
+                    }
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i)
+                    {
+                    }
+                }).show();
 
             }
         });

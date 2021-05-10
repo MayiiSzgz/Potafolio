@@ -30,7 +30,7 @@ public class SQLiteActivity extends AppCompatActivity {
         activitySQLiteBinding = ActivitySQLiteBinding.inflate((getLayoutInflater()));
         setContentView(activitySQLiteBinding.getRoot());
         setClickListeners();
-        setRecyclerView();
+
     }
 
     @Override
@@ -69,8 +69,11 @@ public class SQLiteActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        setRecyclerView();
 
-
-
-
+    }
 }
